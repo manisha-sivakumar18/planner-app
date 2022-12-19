@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Plannerly</title>
+		<link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon" />
+		<link rel="stylesheet" href="styles/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		/>
+		<!-- <link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/> -->
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="toast hide" id="toast">
+				<i class="fa fa-info-circle icon left"></i>
+				<span class="left" id="toast-content"
+					>The email or password entered in invalid. Please try again.</span
+				>
+				<i class="fa fa-close icon right" id="toast-exit"></i>
+			</div>
+			<div class="form-box" id="form-box">
+				<header class="head">
+					<img src="./assets/logo.svg" alt="" />
+					<h1>Plannerly</h1>
+				</header>
+
+				<div class="form-container" id="sign-in-form-cont">
+					<header class="form-header">Sign In</header>
+					<form
+						class="form sign-in-form"
+						id="sign-in-form"
+						onsubmit="return false"
+					>
+						<div class="input">
+							<i class="fa fa-envelope icon"></i>
+							<input
+								type="email"
+								id="sign-in-email"
+								placeholder="Email"
+								required
+							/>
+						</div>
+						<div class="input">
+							<i class="fa fa-lock icon"></i>
+							<input
+								type="password"
+								id="sign-in-pwd"
+								placeholder="Password"
+								required
+							/>
+						</div>
+						<button type="submit" class="submit" id="sign-in-button">
+							Sign In
+						</button>
+					</form>
+					<footer>
+						Don't have an account?
+						<a href="#" id="sign-up-link">Create new one</a>
+					</footer>
+				</div>
+				<div class="form-container hide" id="sign-up-form-cont">
+					<header class="form-header">Sign Up</header>
+					<form
+						class="form sign-up-form"
+						id="sign-up-form"
+						onsubmit="return false"
+					>
+						<div class="input">
+							<i class="fa fa-user icon"></i>
+							<input
+								type="text"
+								placeholder="Name"
+								id="sign-up-name"
+								required
+							/>
+						</div>
+						<div class="input">
+							<i class="fa fa-envelope icon"></i>
+							<input
+								type="email"
+								placeholder="Email"
+								id="sign-up-email"
+								required
+							/>
+						</div>
+						<div class="input pwd">
+							<i class="fa fa-lock icon"></i>
+							<input
+								type="password"
+								placeholder="Password"
+								id="sign-up-pwd"
+								required
+							/>
+							<div class="pwd-req hide" id="pwd-req">
+								<ul>
+									Password requirements
+									<li>An upper case letter</li>
+									<li>A lower case letter</li>
+									<li>A number</li>
+									<li>Minimum 6 characters</li>
+								</ul>
+							</div>
+						</div>
+						<div class="input">
+							<i class="fa fa-lock icon"></i>
+							<input
+								type="password"
+								placeholder="Confirm Password"
+								id="sign-up-pwd2"
+								required
+							/>
+						</div>
+						<button type="submit" class="submit" id="sign-up-button">
+							Sign Up
+						</button>
+					</form>
+					<footer>
+						Already have an account? <a href="#" id="sign-in-link">Sign in</a>
+					</footer>
+				</div>
+			</div>
+			<div class="dashboard hide" id="dashboard">
+				<div class="navbar">
+					<div class="navbar-content">
+						<img src="./assets/logo.svg" class="logo" alt="" />
+						<h1 class="logo">Plannerly</h1>
+					</div>
+					<div class="navbar-content">
+						<i class="fa fa-user fa-2x"></i>
+						<span id="current-user">Name</span>
+					</div>
+				</div>
+				<div class="main-content">
+					<div class="search-and-sort">
+						<div class="sort" id="all-sort-cont">
+							<button class="sort-btn" id="all-sort">
+								Sort <img src="./assets/sort-arrow-icon.png" alt="" />
+							</button>
+							<div class="sort-options hide" id="all-sort-options">
+								<button
+									class="sort-btn"
+									id="all-alpha-sort"
+									onclick="sortAlpha(event)"
+								>
+									Alphabet <i class="fa fa-sort-alpha-asc"></i>
+								</button>
+								<button
+									class="sort-btn"
+									id="all-start-sort"
+									onclick="sortStartDate(event)"
+								>
+									Start Date<i class="fa fa-arrow-down-1-9"></i>
+								</button>
+								<button
+									class="sort-btn"
+									id="all-end-sort"
+									onclick="sortEndDate(event)"
+								>
+									End Date<i class="fa fa-light fa-arrow-down-1-9"></i>
+								</button>
+							</div>
+						</div>
+						<input
+							type="text"
+							class="search"
+							id="filter"
+							placeholder="search task name..."
+							onchange="searchAllTasks()"
+						/>
+					</div>
+					<div class="bucket-container">
+						<div class="bucket" id="to-do">
+							<header class="bucket-head">
+								<h2>To-Do</h2>
+								<div>
+									<div class="sort" id="todo-sort-cont">
+										<button class="sort-btn" id="todo-sort">
+											Sort <img src="./assets/sort-arrow-icon.png" alt="" />
+										</button>
+										<div class="sort-options hide" id="todo-sort-options">
+											<button class="sort-btn" onclick="sortAlpha(event)">
+												Alphabet <i class="fa fa-sort-alpha-asc"></i>
+											</button>
+											<button class="sort-btn" onclick="sortStartDate(event)">
+												Start Date<i class="fa fa-arrow-down-1-9"></i>
+											</button>
+											<button class="sort-btn" onclick="sortEndDate(event)">
+												End Date<i class="fa fa-light fa-arrow-down-1-9"></i>
+											</button>
+										</div>
+										<i class="fa fa-plus icon" id="todo-add"></i>
+									</div>
+								</div>
+							</header>
+							<div
+								class="task-list"
+								id="todo-bucket"
+								ondrop="drop(event)"
+								ondragover="allowDrop(event)"
+							></div>
+						</div>
+						<div class="bucket" id="in-progress">
+							<header class="bucket-head">
+								<h2>In Progress</h2>
+								<div>
+									<div class="sort" id="inprogess-sort-cont">
+										<button class="sort-btn" id="inprogress-sort">
+											Sort <img src="./assets/sort-arrow-icon.png" alt="" />
+										</button>
+										<div class="sort-options hide" id="inprogress-sort-options">
+											<button class="sort-btn" onclick="sortAlpha(event)">
+												Alphabet <i class="fa fa-sort-alpha-asc"></i>
+											</button>
+											<button class="sort-btn" onclick="sortStartDate(event)">
+												Start Date<i class="fa fa-arrow-down-1-9"></i>
+											</button>
+											<button class="sort-btn" onclick="sortEndDate(event)">
+												End Date<i class="fa fa-light fa-arrow-down-9-1"></i>
+											</button>
+										</div>
+										<i class="fa fa-plus icon" id="inprogress-add"></i>
+									</div>
+								</div>
+							</header>
+							<div
+								class="task-list"
+								id="inprogress-bucket"
+								ondrop="drop(event)"
+								ondragover="allowDrop(event)"
+							></div>
+						</div>
+						<div class="bucket" id="completed">
+							<header class="bucket-head">
+								<h2>Completed</h2>
+								<div>
+									<div class="sort" id="completed-sort-cont">
+										<button class="sort-btn" id="completed-sort">
+											Sort <img src="./assets/sort-arrow-icon.png" alt="" />
+										</button>
+										<div class="sort-options hide" id="completed-sort-options">
+											<button class="sort-btn" onclick="sortAlpha(event)">
+												Alphabet <i class="fa fa-sort-alpha-asc"></i>
+											</button>
+											<button class="sort-btn" onclick="sortStartDate(event)">
+												Start Date<i class="fa fa-arrow-down-1-9"></i>
+											</button>
+											<button class="sort-btn" onclick="sortEndDate(event)">
+												End Date<i class="fa fa-light fa-arrow-down-1-9"></i>
+											</button>
+										</div>
+										<i class="fa fa-plus icon" id="completed-add"></i>
+									</div>
+								</div>
+							</header>
+							<div
+								class="task-list"
+								id="completed-bucket"
+								ondrop="drop(event)"
+								ondragover="allowDrop(event)"
+							></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="task-window hide" id="add-task">
+				<div class="task-form">
+					<header class="task-head">
+						<h3 id="form-head">Add Task</h3>
+						<i class="fa fa-close" id="add-close"></i>
+					</header>
+					<form class="add-task" id="add-task-form" onsubmit="return false">
+						<fieldset class="fieldset" name="fieldset">
+							<div class="inp">
+								<label for="task-name" class="task-label">Task Name</label>
+								<input
+									type="text"
+									class="task-input"
+									id="task-input"
+									name="taskName"
+									required
+								/>
+							</div>
+							<div class="inp">
+								<label for="projectName" class="task-label"
+									>Project Name*</label
+								>
+								<input
+									type="text"
+									class="task-input"
+									name="projectName"
+									required
+								/>
+							</div>
+							<div class="inp">
+								<label for="description" class="task-label">Description</label>
+								<textarea
+									name="description"
+									class="task-input"
+									rows="5"
+								></textarea>
+							</div>
+							<div class="inp hide" id="progress">
+								<label for="progress" class="task-label">Progress*</label>
+								<select name="progress" class="task-input" required>
+									<option class="task-input" value="todo" selected>
+										To do
+									</option>
+									<option class="task-input" value="inprogress">
+										In Progress
+									</option>
+									<option class="task-input" value="completed">
+										Completed
+									</option>
+								</select>
+							</div>
+							<div class="date-container">
+								<div class="inp">
+									<label for="starDate" class="task-label">Start Date*</label>
+									<input
+										type="date"
+										class="task-input"
+										name="startDate"
+										required
+									/>
+								</div>
+								<div class="inp">
+									<label for="endDate" class="task-label">End Date*</label>
+									<input
+										type="date"
+										class="task-input"
+										name="endDate"
+										required
+									/>
+								</div>
+							</div>
+							<div class="buttons">
+								<button type="submit" class="submit" id="add-submit">
+									Add Task
+								</button>
+								<button type="submit" class="submit hide" id="edit-submit">
+									Edit Task
+								</button>
+								<button type="reset" class="cancel" id="cancel">Cancel</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="./scripts/webAPI.js"></script>
+		<script src="./scripts/dashboard.js"></script>
+		<script src="./scripts/form.js"></script>
+	</body>
+</html>

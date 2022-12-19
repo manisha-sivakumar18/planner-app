@@ -1,0 +1,129 @@
+img {
+	height: 3em;
+	margin: 0 0.5em;
+}
+
+.form-container {
+	background-color: var(--bg-light-gray);
+	border-radius: 2em;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+}
+
+.form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	margin: 0 auto;
+	padding: 2em;
+}
+
+.form-header {
+	background-color: var(--text-dark-cyan);
+	border-radius: 1em 1em 0 0;
+	color: var(--primary-white);
+	font-size: 2em;
+	padding: 0.5em;
+	text-align: center;
+}
+
+footer {
+	padding: 0 2em 2em 2em;
+	text-align: center;
+}
+
+.input {
+	background-color: var(--primary-white);
+	border: black;
+	border-radius: 1em;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.28);
+}
+
+i {
+	margin: 0.5em;
+}
+
+.form input {
+	border-radius: 1em;
+	border-style: hidden;
+	padding: 0.5em;
+}
+.form input:focus {
+	outline: none;
+}
+
+.submit {
+	background-color: var(--bg-button-green-cyan);
+	border: none;
+	border-radius: 1em;
+	color: var(--primary-white);
+	display: inline;
+	margin-top: 1em;
+	padding: 1em 2em;
+}
+
+.submit:hover {
+	background-color: #558f83;
+}
+
+.submit:active {
+	background-color: #558f83;
+	box-shadow: 0 2px #666;
+	transform: translateY(2px);
+}
+
+.hide {
+	display: none;
+}
+
+.toast {
+	background-color: var(--bg-warning-red);
+	border-radius: 1em;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+	color: var(--primary-white);
+	left: 50%;
+	min-width: 250px;
+	padding: 0.5em 1em;
+	position: fixed;
+	text-align: center;
+	top: 2em;
+	transform: translate(-50%, 0);
+	z-index: 10;
+}
+
+.right {
+	display: inline-block;
+	float: right;
+	margin: 0.5em;
+}
+
+.left {
+	display: inline-block;
+	float: left;
+	margin: 0.5em;
+}
+
+.pwd {
+	position: relative;
+}
+
+.pwd-req {
+	float: right;
+	left: 105%;
+	top: 1%;
+	width: max-content;
+	background-color: var(--primary-white);
+	color: var(--bg-button-green-cyan);
+	position: absolute;
+	font-size: 0.8em;
+	z-index: 1;
+	padding: 0.5em;
+	border-radius: 1em;
+	border: 1px solid var(--bg-button-green-cyan);
+}
+
+.pwd-req ul {
+	list-style-position: inside;
+}

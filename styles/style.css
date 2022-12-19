@@ -1,0 +1,26 @@
+@import url("./vars.css");
+@import url("./task.css");
+@import url("./dashboard.css");
+@import url("./form.css");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.main-container {
+	align-items: center;
+	background-color: var(--bg-light-blue);
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+}
+
+.head {
+	align-items: center;
+	color: var(--text-dark-cyan);
+	display: flex;
+	padding: 2em;
+}
